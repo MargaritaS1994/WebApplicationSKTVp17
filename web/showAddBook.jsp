@@ -14,19 +14,19 @@
     <body>
         <h1>Создать книгу</h1>
         
-    <from action="createBook" method="POST">
+    <form action="createBook" method="POST">
         Название книги:<br> 
         <input type="text" name="name"><br>
         Автор книги:<br>
          <input type="text" name="author"><br>
          Год издания книги:<br>
           <input type="text" name="publishedYear"><br>
-          ISBN книги:<br>
+         ISBN книги:<br>
           <input type="text" name="isbn"><br>
-          Количество книг:<br>
+         Количество книг:<br>
          <input type="text" name="quantity"><br>
          <input type="submit" value="Создать"><br>
-    </from>
+    </form>
  
     </body>
 </html>

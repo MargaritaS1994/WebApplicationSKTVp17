@@ -8,6 +8,7 @@ package controller;
 import entity.Book;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +24,7 @@ import session.BookFacade;
 @WebServlet(name = "WebController", urlPatterns = {
     "/showAddBook",
     "/createBook",
+    "/listBooks",
 
         
 })
@@ -34,6 +36,7 @@ public class WebController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String path = request.getServletPath();
         switch (path) {
             case "/showAddBook":
@@ -59,6 +62,12 @@ public class WebController extends HttpServlet {
                 request.getRequestDispatcher("/index.jsp")
                         .forward(request, response);
                 
+                break;
+            case "/listBooks":
+                List<Book> listBooks = bookFacade.findAll();
+                request.setAttribute("listBooks", listBooks);
+                request.getRequestDispatcher("/listBooks.jsp")
+                        .forward(request, response);
                 break;
             default:
                 throw new AssertionError();
