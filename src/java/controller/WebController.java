@@ -35,7 +35,10 @@ import session.ReaderFacade;
     "/createReader",
     "/showTakeBook",
     "/listReaders",
-    "/createHistory",})
+    "/createHistory",
+    "/showReturnBook",
+    "/returnBook",
+})
 
 public class WebController extends HttpServlet {
 
@@ -83,7 +86,7 @@ public class WebController extends HttpServlet {
                         .forward(request, response);
                 break;
             case "/showAddReader":
-                request.getRequestDispatcher("showAddReader.jsp")
+                request.getRequestDispatcher("/showAddReader.jsp")
                         .forward(request, response);
                 break;
             case "/createReader":
@@ -119,7 +122,7 @@ public class WebController extends HttpServlet {
                 String bookId = request.getParameter("bookId");
                 reader = readerFacade.find(new Long(readerId));
                 book = bookFacade.find(Long.parseLong(bookId));
-                History history = new History(reader, book, c.getTime(), null);
+                History history = new History(reader, book, c.getTime());
                 if (book.getCount() > 0) {
                     book.setCount(book.getCount() - 1);
                     bookFacade.edit(book);
@@ -149,8 +152,7 @@ public class WebController extends HttpServlet {
                         .forward(request, response);
                 break;
 
-            default:
-                throw new AssertionError();
+            
         }
 
     }
@@ -192,6 +194,6 @@ public class WebController extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

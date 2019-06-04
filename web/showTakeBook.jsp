@@ -13,22 +13,23 @@
     </head>
     <body>
         <h1>Выдаем книгу</h1>
-    <from action="createHistory" method="POST">
-        Список пользователей:<br>
-        <select name="readerId">
-            <c:forEach var="reader" items="${listReaders}">
-                <option value="${reader.id}">${reader.name} ${reader.surmane}</option>
-            </c:forEach>
-        </select>
-        <br>
-        Список книг:<br>
-        <select name="bookId">
-            <c:forEach var="book" items="${listBooks}">
-                <option value="${book.id}">${book.name} ${book.author}</option>
-            </c:forEach>
-        </select>
-        <input type="sumbit" value="Выдать книгу">
-    </from>
+        <form action="createHistory" method="POST">
+            Список пользователей:<br>
+            <select name="readerId">
+                <c:forEach var="reader" items="${listReaders}">
+                    <option value="${reader.id}">${reader.name} ${reader.surname}</option>
+                </c:forEach>
+            </select>
+            <br>
+            Список книг:<br>
+            <select name="bookId">
+                <c:forEach var="book" items="${listBooks}">
+                    <option value="${book.id}">${book.name} ${book.author}</option>
+                </c:forEach>
+            </select>
+            <br><br>
+            <input type="submit" value="Выдать книгу">
+        </form>
         
     </body>
 </html>

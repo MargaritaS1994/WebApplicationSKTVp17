@@ -26,24 +26,24 @@ public class History implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-   @OneToOne
-   private Reader reader;
-   @OneToOne
-   private Book book;
-   @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-   private Date dateTakeBook;
-   @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-   private Date dateReturnBook;
-   
-   public History() {
-       
-   }
+    @OneToOne
+    private Reader reader;
+    @OneToOne
+    private Book book;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date dateTakeBook;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date dateReturnBook;
 
-    public History(Reader reader, Book book, Date dateTakeBook, Date dateReturnBook) {
+    public History() {
+
+    }
+
+    public History(Reader reader, Book book, Date dateTakeBook) {
         this.reader = reader;
         this.book = book;
         this.dateTakeBook = dateTakeBook;
-        this.dateReturnBook = dateReturnBook;
+        this.dateReturnBook = null;
     }
 
     public Long getId() {
